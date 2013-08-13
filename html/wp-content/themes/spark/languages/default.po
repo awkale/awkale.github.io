@@ -1,0 +1,321 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: pavel <pavelyakov@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+
+#. Text in function
+#: ../partials/content.php:74 ../partials/content-aside.php:56
+#: ../partials/content-audio.php:72 ../partials/content-chat.php:55
+#: ../partials/content-gallery.php:114 ../partials/content-image.php:72
+#: ../partials/content-link.php:55 ../partials/content-quote.php:56
+#: ../partials/content-single.php:174 ../partials/content-status.php:56
+#: ../partials/content-video.php:72
+msgid "<span class=\"%1$s\">Tagged</span> %2$s"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content.php:90 ../partials/content-aside.php:72
+#: ../partials/content-chat.php:70 ../partials/content-gallery.php:126
+#: ../partials/content-image.php:88 ../partials/content-quote.php:71
+msgid "Continue Reading&rarr;"
+msgstr ""
+
+#. Text in function
+#: ../partials/content.php:68 ../partials/content-aside.php:50
+#: ../partials/content-audio.php:66 ../partials/content-chat.php:49
+#: ../partials/content-gallery.php:108 ../partials/content-image.php:66
+#: ../partials/content-link.php:49 ../partials/content-page.php:75
+#: ../partials/content-page-full.php:62
+#: ../partials/content-page-left-sidebar.php:70
+#: ../partials/content-page-right-sidebar.php:62
+#: ../partials/content-quote.php:50 ../partials/content-single.php:168
+#: ../partials/content-status.php:50 ../partials/content-video.php:66
+msgid "Edit"
+msgstr ""
+
+#. Text in function
+#: ../partials/content.php:54 ../partials/content-aside.php:36
+#: ../partials/content-audio.php:52 ../partials/content-chat.php:35
+#: ../partials/content-gallery.php:94 ../partials/content-image.php:52
+#: ../partials/content-link.php:35 ../partials/content-quote.php:36
+#: ../partials/content-single.php:154 ../partials/content-status.php:36
+#: ../partials/content-video.php:52 ../loop_latest_blog_testimonial.php:73
+msgid "Permalink to %s"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-contact-first.php:47
+#: ../partials/content-contact-second.php:55
+msgid "Are you human?"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-contact-first.php:66
+#: ../partials/content-contact-second.php:71
+msgid "Contact information"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-contact-first.php:31
+#: ../partials/content-contact-second.php:39 ../comments-temp.php:101
+msgid "First Name"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-contact-first.php:33
+#: ../partials/content-contact-second.php:41 ../comments-temp.php:104
+msgid "Last name"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-contact-first.php:21
+#: ../partials/content-contact-second.php:29
+msgid "Send us mail"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-contact-first.php:50
+#: ../partials/content-contact-second.php:58
+msgid "Submit message"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-contact-first.php:37
+#: ../partials/content-contact-second.php:45
+msgid "Your email"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-contact-first.php:43
+#: ../partials/content-contact-second.php:51 ../comments-temp.php:122
+msgid "Your message"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-contact-first.php:39
+#: ../partials/content-contact-second.php:47
+msgid "Your phone"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-contact-first.php:52
+#: ../partials/content-contact-second.php:60
+msgid "send message..."
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-portfolio_layout_1.php:193
+#: ../partials/content-portfolio_layout_2.php:193
+#: ../partials/content-portfolio_layout_3.php:193
+#: ../partials/content-portfolio_layout_4.php:194
+#: ../partials/content-portfolio_layout_4_no_sep.php:194
+#: ../partials/content-portfolio_layout_6.php:193
+msgid "Sorry, no portfolio entries for while."
+msgstr ""
+
+#. Text in function
+#: ../partials/content-single.php:212
+msgid "Next page"
+msgstr ""
+
+#. Text in function
+#: ../partials/content-single.php:212
+msgid "Pages:"
+msgstr ""
+
+#. Text in function
+#: ../partials/content-single.php:212
+msgid "Previous page"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-single-portfolio.php:173
+#: ../partials/content-single-portfolio-ajax.php:192
+msgid "Client"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-single-portfolio.php:167
+#: ../partials/content-single-portfolio-ajax.php:186
+msgid "Skills"
+msgstr ""
+
+#. Text in echo
+#: ../partials/content-single-portfolio.php:178
+#: ../partials/content-single-portfolio-ajax.php:197
+msgid "visit site"
+msgstr ""
+
+#. Text in function
+#: ../archive.php:54 ../category.php:39
+msgid "<span class=\"meta-nav\">&larr;</span> Older posts"
+msgstr ""
+
+#. Text in echo
+#: ../archive.php:22
+msgid "Blog Archives"
+msgstr ""
+
+#. Text in function
+#: ../archive.php:16
+msgid "Daily Archives: <span>%s</span>"
+msgstr ""
+
+#. Text in function
+#: ../archive.php:18
+msgid "Monthly Archives: <span>%s</span>"
+msgstr ""
+
+#. Text in function
+#: ../archive.php:55 ../category.php:40
+msgid "Newer posts <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#. Text in function
+#: ../archive.php:20
+msgid "Yearly Archives: <span>%s</span>"
+msgstr ""
+
+#. Text in function
+#: ../category.php:12
+msgid "Category Archives: %s"
+msgstr ""
+
+#. Text in function
+#: ../comments-temp.php:68
+msgid "% Comments"
+msgstr ""
+
+#. Text in function
+#: ../comments-temp.php:28
+msgid "%1$s"
+msgstr ""
+
+#. Text in function
+#: ../comments-temp.php:23
+msgid "%s <i class=\"icon-comment-alt\"></i>"
+msgstr ""
+
+#. Text in echo
+#: ../comments-temp.php:101 ../comments-temp.php:111 ../comments-temp.php:122
+msgid "<i class=\\\"icon-asterisk\\\"></i>"
+msgstr ""
+
+#. Text in function
+#: ../comments-temp.php:73
+msgid "<span>&laquo;</span> Previous"
+msgstr ""
+
+#. Text in echo
+#: ../comments-temp.php:24
+msgid "Author <i class=\"icon-certificate\"></i>"
+msgstr ""
+
+#. Text in echo
+#: ../comments-temp.php:111
+msgid "Email"
+msgstr ""
+
+#. Text in function
+#: ../comments-temp.php:80
+msgid "Leave a Comment"
+msgstr ""
+
+#. Text in function
+#: ../comments-temp.php:80
+msgid "Leave a Comment to %s"
+msgstr ""
+
+#. Text in function
+#: ../comments-temp.php:95
+msgid "Log out of this account"
+msgstr ""
+
+#. Text in function
+#: ../comments-temp.php:95
+msgid "Logged in as %1$s. %2$sLog out &raquo;%3$s"
+msgstr ""
+
+#. Text in function
+#: ../comments-temp.php:73
+msgid "Next <span>&raquo;</span>"
+msgstr ""
+
+#. Text in function
+#: ../comments-temp.php:68
+msgid "No Comments"
+msgstr ""
+
+#. Text in function
+#: ../comments-temp.php:68
+msgid "One Comment"
+msgstr ""
+
+#. Text in echo
+#: ../comments-temp.php:124
+msgid "Submit Comment"
+msgstr ""
+
+#. Text in echo
+#: ../comments-temp.php:114
+msgid "Website"
+msgstr ""
+
+#. Text in echo
+#: ../comments-temp.php:34
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#. Text in echo
+#: ../home.php:40
+msgid ""
+"Apologies, but no results were found for the requested archive. Perhaps "
+"searching will help find a related post."
+msgstr ""
+
+#. Text in echo
+#: ../home.php:36
+msgid "Nothing Found"
+msgstr ""
+
+#. Text in echo
+#: ../loop_latest_blog_testimonial.php:11
+msgid "Latest Blog &amp; Testimonials"
+msgstr ""
+
+#. Text in echo
+#: ../loop_latest_portfolio.php:10 ../loop_latest_portfolio_home.php:10
+#: ../loop_latest_portfolio_home_c.php:10
+msgid "Latest Portfolio"
+msgstr ""
+
+#. Text in echo
+#: ../loop_latest_portfolio_home.php:36 ../loop_latest_portfolio_home_c.php:39
+msgid "more info"
+msgstr ""
+
+#. Text in echo
+#: ../loop_latest_portfolio_home.php:36 ../loop_latest_portfolio_home_c.php:39
+msgid "view"
+msgstr ""
+
+#. Text in echo
+#: ../search.php:48
+msgid "Not Found"
+msgstr ""
+
+#. Text in echo
+#: ../search.php:12
+msgid "Search Results for &ldquo;"
+msgstr ""
+
+#. Text in echo
+#: ../search.php:49
+msgid "Sorry, but the requested resource was not found on this site."
+msgstr ""

@@ -1,0 +1,166 @@
+<?php wp_reset_query();
+global $root; ?>
+<?php while ( have_posts() ) : the_post(); ?>
+<?php
+$sub_title = get_post_meta(get_the_ID(), 'csc_sub_title', true);
+?> 
+<!-- Page Title -->
+<div class="span12 strip-lines">
+<div class="row">
+
+<div class="span12">
+<header id="pagehead" style="border:none">
+<h1><?php the_title(); ?> <small><?php echo $sub_title ?></small></h1>
+</header>
+</div>
+	<?php $metas = wp_get_post_terms($post->ID, 'tagportifolio', array("fields" => "names"));?>
+<?php endwhile;?>
+
+    
+        
+ </div>
+ </div>       
+        
+             
+        
+             
+      <div class="span12">
+       <div class="row">
+       <section>  
+          <?php 
+
+ if( wp_get_post_terms($post->ID, 'tagportifolio', array("fields" => "names")))
+			  
+			  { 
+			  
+			  
+	$args=array(
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'tagportifolio',
+            'field' => 'slug',
+            'terms' =>  $metas
+        )
+    ),
+    'post_type' => 'portfolio',
+    'orderby' => 'date',
+    'order' => 'DESC',
+    'posts_per_page' => '-1'
+);
+			  
+			  
+			 
+} else {
+				  
+				  
+	$args=array(
+	
+    'post_type' => 'portfolio',
+    'orderby' => 'date',
+    'order' => 'DESC',
+    'posts_per_page' => '-1'
+);	  
+
+}
+
+$loop = new WP_Query($args);
+	
+?>
+
+<div class="span4">
+
+<div class="row">
+<div class="span4 scroll-side">
+<?php generated_dynamic_sidebar(); ?>
+</div>
+</div>
+
+</div>
+
+
+<div class="span8" id="blog_page">
+<div class="row">
+
+           <ul class="port-block row portfolio" id="portfolio-list" style="margin-left:0;">
+             <?php if ( $loop ) : 
+					 
+					while ( $loop->have_posts() ) : $loop->the_post(); ?>
+					
+						<?php
+						$terms = get_the_terms( $post->ID, 'tagportifolio');
+								
+						if ( $terms && ! is_wp_error( $terms ) ) : 
+							$links = array();
+
+							foreach ( $terms as $term ) 
+							{
+								$links[] = $term->name;
+							}
+							$links = str_replace(' ', '-', $links);	
+							$tax = join( " ", $links );		
+						else :	
+							$tax = '';	
+						endif;
+						
+						
+						?>
+                        
+          <?php 
+			$image =  portfolio_thumbnail_url($post->ID);
+			$humb = vt_resize( '', $image, 300, 220, true );
+			?>
+           <style>
+		   .port-block li {display: inline-block;height: 220px;text-align:center;}
+		   .port-info-wrap, .port-info{position: absolute;width: 260px;height: 180px;}
+		   .port-info-wrap {top: 20px;left: 20px;box-shadow: 0 0 0 20px rgba(255,255,255,0.2), inset 0 0 3px rgba(115,114, 23, 0.8);}
+
+		   </style> 
+                       
+                        
+          <li class="span4 <?php echo strtolower($tax); ?> all item-block">
+          
+
+          
+          
+           <div class="port-item" style="background-image: url(<?php echo $humb['url'] ?>)">				
+							<div class="port-info-wrap">
+                            
+								<div class="port-info">
+									<div class="port-info-front" style="background-image: url(<?php echo $humb['url'] ?>)"></div>
+									<div class="port-info-back">
+										<h3><a href="<?php echo get_permalink();?>"><?php echo get_the_title(); ?></a></h3>
+										<p><?php remove_filter ('the_excerpt', 'wpautop'); the_excerpt();?><br>
+                                        <a href="<?php echo get_permalink();?>"><?php _e('more info', 'csc-themewp'); ?> </a> &nbsp;&bull;&nbsp; <a href="<?php print  portfolio_thumbnail_url($post->ID) ?>" rel="prettyPhoto" title="<?php echo get_the_title(); ?>"><?php _e('view', 'csc-themewp'); ?></a>
+                                        </p>
+									</div>	
+								</div>
+                                
+							</div>
+						</div> 
+           
+          
+ 
+         
+            
+           
+          </li>
+						
+					<?php endwhile; else: ?>
+					 
+					<li class="error-not-found"><?php _e('Sorry, no portfolio entries for while.', 'csc-themewp'); ?></li>
+						
+				<?php endif; ?>
+               
+			
+
+</ul>
+<!-- portfolio end here -->
+
+</div>
+</div>
+
+
+   </section> 
+   </div>
+       </div>
+       
