@@ -1,0 +1,46 @@
+---
+---
+@charset "utf-8";
+
+/* path to glyphicons */
+$icon-font-path: "/bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+/* any style customization must be before the bootstrap import */
+
+$bootstrap-sass-asset-helper: false;
+
+@import "custom/variables";
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+
+
+//
+// Scaffolding
+// --------------------------------------------------
+
+
+
+// Body reset
+
+html {
+  font-size: 100%;
+}
+
+body {
+  font-size: $font-size-base;
+  font-weight: $body-font-weight;
+}
+
+$start-color: #E05822;
+
+body {
+  -webkit-animation: colorwheel 200s infinite;
+  background: $start-color;
+}
+
+@-webkit-keyframes colorwheel {
+  @for $i from 0 through 360 {
+    #{$i * 0.2777777777%} {
+      background: adjust-hue($start-color, $i);
+    }
+  }
+}
