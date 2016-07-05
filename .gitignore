@@ -8,3 +8,5 @@ sitemap.xml.gz
 readme.html
 license.txt
 _site
+.sass-cache
+.sass-cache/4465d7da9dbcd29fd24c810aac3ac9ad4f266a3b/_variables.scssc
