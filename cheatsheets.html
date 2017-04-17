@@ -5,9 +5,9 @@ title: Alex W. Kale | Cheat Sheets
 
 <h3>Cheat Sheets</h3>
 <ul>
-  {% for post in site.posts %}
+  {% for cheatsheet in site.cheatsheet %}
   <li>
-    <a href="{{ post.url }}">{{ post.title }}</a>
+    <a href="{{ cheatsheet.url }}">{{ cheatsheet.title }}</a>
   </li>
   {% endfor %}
 </ul>
