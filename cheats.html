@@ -1,0 +1,13 @@
+---
+layout: default
+title: Alex W. Kale | Cheat Sheets
+---
+
+<h3>Cheat Sheets</h3>
+<ul>
+  {% for cheatsheet in site.cheatsheet %}
+  <li>
+    <a href="{{ cheatsheet.url }}">{{ cheatsheet.title }}</a>
+  </li>
+  {% endfor %}
+</ul>
