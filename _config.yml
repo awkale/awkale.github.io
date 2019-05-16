@@ -12,12 +12,14 @@ title: Alex W. Kale
 email: hi@awkale.me
 description: > # this means to ignore newlines until "baseurl:"
   Portfolio site for Alex W. Kale
-url: "http://awkale.me" # the base hostname & protocol for your site
+url: 'http://awkale.me' # the base hostname & protocol for your site
 twitter_username: awkale
-github_username:  awkale
+github_username: awkale
 
 collections:
   cheatsheets:
+    output: true
+  portfolios:
     output: true
 
 permalink: pretty
