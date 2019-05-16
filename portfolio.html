@@ -1,0 +1,13 @@
+---
+layout: default
+title: Alex W. Kale | Portfolio
+---
+
+<h3>Portfolio</h3>
+<ul>
+  {% for portfolio in site.portfolios %}
+  <li>
+    <a href="{{ portfolio.url }}">{{ portfolio.title }}</a>
+  </li>
+  {% endfor %}
+</ul>
