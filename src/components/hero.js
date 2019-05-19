@@ -43,9 +43,6 @@ const HeroTitle = styled.p`
 
 export default ({ data }) => (
   <Hero>
-    <HeroImage>
-      <Img alt={data.name} fluid={data.heroImage.fluid} />
-    </HeroImage>
     <HeroDetails>
       <HeroHeadline>{data.name}</HeroHeadline>
       <HeroTitle>{data.title}</HeroTitle>
