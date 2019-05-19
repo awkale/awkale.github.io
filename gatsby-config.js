@@ -9,7 +9,7 @@ try {
 contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
   accessToken:
-    process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
+    process.env.CONTENTFUL_ACCESS_TOKEN || contentfulConfig.accessToken,
 };
 
 const { spaceId, accessToken } = contentfulConfig;
@@ -24,7 +24,6 @@ module.exports = {
   siteMetadata: {
     title: 'Alex W. Kale',
   },
-  pathPrefix: '/gatsby-contentful-starter',
   plugins: [
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
@@ -34,6 +33,14 @@ module.exports = {
       resolve: 'gatsby-plugin-styled-components',
       options: {
         // Add any options here
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        typekit: {
+          id: 'tkq1har',
+        },
       },
     },
     {
