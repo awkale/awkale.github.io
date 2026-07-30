@@ -10,3 +10,11 @@ license.txt
 _site/
 .sass-cache/
 .jekyll-metadata
+
+# Contentful import -- credentials. This repo is public; never commit a token.
+*cma-token*
+.contentful-cma-token
+# derived/regenerable artifacts from scripts/contentful
+scripts/contentful/bso-graph.json
+scripts/contentful/import-state.json
+scripts/contentful/*.log
