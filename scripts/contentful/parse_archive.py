@@ -342,13 +342,26 @@ for i, row in enumerate(sheet):
     if a not in (None, ""):
         iso, note = parse_date(a)
         prev = cur
-        # A dated row carrying neither piece nor composer is an additional
-        # performance of the preceding program (a two-night run), not a new
-        # program. It shares that concert's program items so the cast listed
-        # beneath it lands on the right pieces.
-        shares = (prev is not None and prev["items"]
-                  and is_blank(comp)
-                  and not (piece is not None and str(piece).strip()))
+        # A dated row can be an additional performance of the preceding program
+        # (a two-night run) rather than a new program. It then shares that
+        # concert's program items, so the cast listed beneath it lands on the
+        # right pieces -- and because "items" is shared by reference, any piece
+        # on the row itself is appended to both concerts.
+        #
+        # The sheet writes such a row two ways:
+        #   1. bare date, no piece and no composer (4 rows)
+        #   2. date placed on the row of the run's *next* piece, leaving the
+        #      conductor, orchestra and venue cells empty (4 rows)
+        # Form 2 is only distinguishable by all three of conductor, orchestra
+        # and venue being blank. Requiring all three matters: row 266
+        # ('var. dates, 1983') has a blank conductor and venue but names BHO,
+        # and is a genuine concert. Across all 1,484 rows these two forms match
+        # exactly 8 rows, every one of them intended.
+        continues_run = (is_blank(cond) and is_blank(orch) and is_blank(ven))
+        bare_date = (is_blank(comp)
+                     and not (piece is not None and str(piece).strip()))
+        shares = (prev is not None and bool(prev["items"])
+                  and (bare_date or continues_run))
         cur = {"date": iso, "dateNote": note, "season": season_num,
                "hall": get_hall(ven) or (prev["hall"] if shares else None),
                "orchestra": get_orchestra(orch) or (prev["orchestra"] if shares else None),
@@ -359,8 +372,10 @@ for i, row in enumerate(sheet):
         if shares:
             cur["dateNote"] = note or f"Additional performance of the {prev['date'] or prev['raw_date']} program"
             cur_item = prev["items"][-1]      # cast below continues on this item
+            how = "bare date" if bare_date else "date on the next piece's row"
             report["shared_program"].append(
-                f"row {rn}: {a!r} shares the program of {prev['date'] or prev['raw_date']!r}")
+                f"row {rn}: {a!r} shares the program of "
+                f"{prev['date'] or prev['raw_date']!r} ({how})")
         else:
             cur_item = None
         concerts.append(cur)
