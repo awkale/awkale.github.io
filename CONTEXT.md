@@ -53,10 +53,22 @@ _Avoid_: Author, writer
 
 **Arranger**:
 A person who reworked a Work for different forces than the Composer wrote for.
-_Avoid_: Orchestrator, transcriber, editor — all are Arrangers here
+The role name covers all four Arrangement types, but the types themselves are
+distinct and must not be collapsed — see Arrangement type.
+_Avoid_: calling the person an Orchestrator, transcriber or editor; they are all
+Arrangers
 
 **Arrangement**:
-A Work as reworked by an Arranger.
+A Work as reworked by an Arranger. A distinct Work in its own right, not a
+variant of the original — it has its own page, and links to the original when the
+Archive holds it.
+
+**Arrangement type**:
+How a Work was reworked: an Arrangement, Orchestration, Transcription or Edition.
+A real distinction, not four words for one thing — Ravel orchestrated
+_Pictures at an Exhibition_, Roven transcribed _Kindertotenlieder_, and Mauceri
+edited the _Psycho_ selections.
+_Avoid_: describing any of the four as "arranged" generically
 
 **Soloist**:
 A named featured performer on a Program item. Section players are not recorded
