@@ -122,18 +122,51 @@ fallbacks needed.
   Decisions-so-far / Fog body.
 - **Child ticket**: an issue with `parentId` set to the map's identifier.
   Labels: `wayfinder:<type>` (`research` / `prototype` / `grilling` / `task`).
-  Once claimed, assigned to the driving dev.
 - **Blocking**: native issue relations. Add with `save_issue`
   (`id: "<child>", blockedBy: ["AWK-7"]`); remove with `removeBlockedBy`.
   Read them back with `get_issue` + `includeRelations: true`.
 - **Frontier query**: `list_issues` with `parentId: "<map>"`,
   `includeArchived: false`, and
   `fields: ["id", "title", "status", "statusType", "labels", "assignee"]`.
-  Drop anything with a `completed`/`canceled` `statusType`, anything with an
-  `assignee`, and anything with an unfinished blocker (check each candidate
+  Drop anything with a `completed`/`canceled` `statusType`, anything already
+  `In Progress`, and anything with an unfinished blocker (check each candidate
   with `get_issue` + `includeRelations: true`). First in sub-issue order wins.
-- **Claim**: `save_issue` with `id` and `assignee: "me"` — the session's first
-  write.
+- **Claim**: `save_issue` with `id` and `state: "In Progress"` — the session's
+  first write.
+
+### The claim signal is workflow state, not assignee
+
+`/wayfinder` as written treats the **assignee** as the claim, and an open
+unassigned ticket as unclaimed. **That does not work here.** This is a solo
+repo: every issue is assigned to Alex, so "has an assignee" is universally true
+and distinguishes nothing. A frontier query that drops anything assigned returns
+an empty frontier forever.
+
+So the claim is the **workflow state**, and assignee stays what it naturally is
+— ownership, always Alex. The mapping:
+
+| State | Frontier meaning |
+| --- | --- |
+| `Backlog` | has an unfinished blocker; not takeable |
+| `Todo` | unblocked and unclaimed — **this is the frontier** |
+| `In Progress` | claimed, or a human task underway |
+| `Done` / `Canceled` | closed, off the frontier |
+
+This also expresses something assignee could not: assignee is binary, but state
+separates **blocked** from **merely unclaimed**, which is exactly the
+distinction the frontier needs.
+
+**Blocking relations stay authoritative.** State is a fast index, not the source
+of truth — nothing enforces that `Backlog` and "has a blocker" agree. On AWK-5
+they agreed exactly (all four `Backlog` children blocked, all four `Todo`
+children unblocked) but that is maintained by hand. So still check
+`includeRelations: true` on each candidate rather than trusting `Todo` alone,
+and if you find an unblocked ticket sitting in `Backlog`, move it to `Todo`
+rather than skipping it.
+
+Setting `In Progress` as the session's first write is also what keeps two
+concurrent agent sessions off the same ticket — the role the assignee played in
+the original design.
 - **Resolve**: `save_comment` with the answer, then `save_issue` with
   `state: "Done"`, then append a context pointer to the map's
   Decisions-so-far (use `patch` with an `append` op).
