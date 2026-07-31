@@ -70,9 +70,18 @@ Verified against the source; these are what make the 1,489 rows parseable:
   and extra soloist credits are indented.
 * A row with no piece and no composer carries **additional soloists for the
   piece above** — 232 rows do this.
-* A *dated* row with no piece and no composer is an **additional performance of
-  the preceding program** (a two-night run), not a new program. Both concerts
-  link the same program items. 4 rows do this.
+* A dated row can be an **additional performance of the preceding program** (a
+  two-night run) rather than a new program. Both concerts link the same program
+  items. The sheet writes this two ways, 8 rows in total:
+  * **Bare date** — no piece and no composer (4 rows).
+  * **Date on the run's next piece**, leaving conductor, orchestra and venue
+    empty (4 rows: 879, 966, 1006, 1091). All three cells must be blank to
+    qualify. Row 266 (`var. dates, 1983`) has a blank conductor and venue but
+    names BHO, and is a genuine concert — testing only two of the three would
+    silently swallow it.
+
+  `report["shared_program"]` labels which form matched, so a future edit to the
+  sheet that trips the heuristic is visible rather than silent.
 * Each soloist cell holds exactly one credit, `Name` or `Name, Role[, Role...]`.
   Multiple roles mean one player on several instruments. Roles that aren't
   instruments or voices are treated as opera characters.

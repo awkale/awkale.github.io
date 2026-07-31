@@ -24,6 +24,14 @@ collections:
 
 permalink: pretty
 
+# Repo working files, not site content. Without this Jekyll copies them into
+# _site verbatim and Pages serves them at awkale.me (e.g. /docs/adr/...).
+exclude:
+  - AGENTS.md
+  - CONTEXT.md
+  - docs
+  - scripts
+
 # Build settings
 kramdown:
   input: GFM
