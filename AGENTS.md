@@ -6,7 +6,7 @@ Instructions for coding agents working in this repository.
 
 ### Issue tracker
 
-Issues live in **Linear** — workspace `awkale`, team **Alex Kale** (`ALE`) —
+Issues live in **Linear** — workspace `awkale`, team **AWKALE** (key `AWK`) —
 reached via the `linear-server` MCP. Not GitHub Issues.
 See `docs/agents/issue-tracker.md`.
 

@@ -55,7 +55,7 @@ webhook, and env-var secret storage that keeps tokens out of a public repository
 Cloudflare Pages is comparable but its natural pairing is Cloudflare DNS, which
 the email constraint forbids. Vercel is strongest when the framework is Next,
 which is a question ADR-0002 does not answer and
-[ALE-8](https://linear.app/awkale/issue/ALE-8/choose-the-static-rendering-layer-above-vite)
+[AWK-8](https://linear.app/awkale/issue/AWK-8/choose-the-static-rendering-layer-above-vite)
 does.
 
 **Repository.** Rewriting in place would have kept 83 commits, the Contentful
@@ -126,14 +126,14 @@ runbook, in that order.
 publish triggers a rebuild, the time to prerender 637 pages consumes the monthly
 build-minute budget continuously. This is a selection criterion for the static
 rendering layer, and is recorded on
-[ALE-8](https://linear.app/awkale/issue/ALE-8/choose-the-static-rendering-layer-above-vite).
+[AWK-8](https://linear.app/awkale/issue/AWK-8/choose-the-static-rendering-layer-above-vite).
 
 **An unpublished import renders an empty site.** The build reads the Contentful
 Delivery API, which returns only published entries, and the importer creates
 drafts by default with publishing behind a separate `--publish` flag. If the BSO
 import ran but was never published, the site prerenders successfully with no
 content. Verifying this is
-[ALE-9](https://linear.app/awkale/issue/ALE-9/audit-the-contentful-space).
+[AWK-9](https://linear.app/awkale/issue/AWK-9/audit-the-contentful-space).
 
 **Two Contentful tokens with different homes.** The build needs a read-only
 Delivery token, held in Netlify env vars alongside `CONTENTFUL_SPACE_ID` and

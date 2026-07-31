@@ -1,6 +1,6 @@
 # 0001 — Static-rendering layer above Vite
 
-- **Linear issue:** ALE-8 — "Choose the static-rendering layer above Vite"
+- **Linear issue:** AWK-8 — "Choose the static-rendering layer above Vite"
 - **Date:** 2026-07-31
 - **Status:** Research complete — recommendation below, pending an implementation spike (see Open Questions)
 

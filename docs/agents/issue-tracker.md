@@ -5,8 +5,8 @@ Issues and PRDs for this repo live in **Linear**, not GitHub Issues.
 | | |
 | --- | --- |
 | Workspace | `awkale` (`https://linear.app/awkale`) |
-| Team | **Alex Kale** — key `ALE`, UUID `a5c0a981-f456-48e2-b5e7-d5a81aaf75e6` |
-| Issue identifiers | `ALE-<n>` (e.g. `ALE-42`) |
+| Team | **AWKALE** — key `AWK`, UUID `a5c0a981-f456-48e2-b5e7-d5a81aaf75e6` |
+| Issue identifiers | `AWK-<n>` (e.g. `AWK-42`) |
 | Access | the `linear-server` MCP (`https://mcp.linear.app/mcp`), OAuth |
 
 There is no Linear CLI. All operations go through MCP tools named
@@ -17,17 +17,24 @@ calling, e.g.
 If the server reports `Needs authentication`, run `/mcp` → `linear-server` and
 authorize. Don't fall back to the GraphQL API; there's no API key configured.
 
-Pass the team as `"Alex Kale"` or the UUID above. Prefer the UUID in scripted
-work — the display name is a person's name and may change.
+Pass the team as `"AWKALE"` or the UUID above. **Prefer the UUID in scripted
+work** — on 2026-07-31 both the name and the key were rewritten (`Alex Kale` →
+`AWKALE`, `ALE` → `AWK`), which renumbered every issue. The UUID did not move,
+and is the only identifier here that never has.
+
+Old identifiers still resolve: `get_issue` with `ALE-15` returns `AWK-15`, and
+`linear.app/.../issue/ALE-15/...` redirects. So pre-rename links in older ADRs
+and commit messages are not broken, just stale — but write `AWK-<n>` in anything
+new. Note the team name and the key are not the same string: `AWKALE` vs `AWK`.
 
 ## Conventions
 
 - **Create an issue**: `save_issue` with `title` + `team`, and **no `id`**.
   `description` is Markdown — pass literal newlines, never `\n` escapes.
-- **Read an issue**: `get_issue` with `id: "ALE-42"`. Pass
+- **Read an issue**: `get_issue` with `id: "AWK-42"`. Pass
   `includeRelations: true` whenever you care about blockers, related, or
   duplicate links — **they are omitted by default**.
-- **Read the discussion**: `list_comments` with `issueId: "ALE-42"`. Inline
+- **Read the discussion**: `list_comments` with `issueId: "AWK-42"`. Inline
   (anchored) comments carry a non-null `quotedText`; top-level threads don't.
 - **List issues**: `list_issues` with `team`, plus `state` / `label` /
   `assignee` filters as needed. Two traps:
@@ -98,11 +105,11 @@ concept of its own, so triage reads Linear issues only. GitHub PRs against
 
 ## When a skill says "publish to the issue tracker"
 
-Create a Linear issue on team **Alex Kale** via `save_issue`.
+Create a Linear issue on team **AWKALE** via `save_issue`.
 
 ## When a skill says "fetch the relevant ticket"
 
-`get_issue` with the `ALE-<n>` identifier, plus `list_comments` for the
+`get_issue` with the `AWK-<n>` identifier, plus `list_comments` for the
 discussion. Add `includeRelations: true` if blockers matter.
 
 ## Wayfinding operations
@@ -117,7 +124,7 @@ fallbacks needed.
   Labels: `wayfinder:<type>` (`research` / `prototype` / `grilling` / `task`).
   Once claimed, assigned to the driving dev.
 - **Blocking**: native issue relations. Add with `save_issue`
-  (`id: "<child>", blockedBy: ["ALE-7"]`); remove with `removeBlockedBy`.
+  (`id: "<child>", blockedBy: ["AWK-7"]`); remove with `removeBlockedBy`.
   Read them back with `get_issue` + `includeRelations: true`.
 - **Frontier query**: `list_issues` with `parentId: "<map>"`,
   `includeArchived: false`, and
