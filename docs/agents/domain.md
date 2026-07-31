@@ -16,8 +16,9 @@ absence; don't suggest creating them upfront. The `/domain-modeling` skill
 (reached via `/grill-with-docs` and `/improve-codebase-architecture`) creates
 them lazily when terms or decisions actually get resolved.
 
-As of this file's creation, neither `CONTEXT.md` nor `docs/adr/` exists yet.
-That is the expected starting state, not a gap to fill.
+Both now exist — `CONTEXT.md` holds the glossary, and `docs/adr/` holds the
+accepted decision records. They were created lazily, as decisions actually got
+resolved, which is the intended pattern rather than an upfront scaffold.
 
 ## File structure
 
