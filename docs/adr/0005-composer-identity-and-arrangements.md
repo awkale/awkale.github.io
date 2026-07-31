@@ -256,8 +256,12 @@ UI following the link must tolerate a target with no route, and must not assume 
 link implies a destination.
 
 **One work-slug collision is now structural and must be resolved by AWK-18.**
-ADR-0001 established that composer-and-title is unique across the archive. It is
-not: the two Nutcracker Suites collide on it exactly, and both are in scope. The
+ADR-0001 contradicts itself on this point: it drops the importer's hash on the
+grounds that composer-and-title "is already unique", while its own Consequences
+note that the Nutcracker pair claims one path. The second reading is the correct
+one — the two Nutcracker Suites collide on composer-and-title exactly, both are in
+scope, and the collision predates any merge because the titles were always
+identical. ADR-0001 has been corrected in place. The
 disambiguator is settled in principle — derived from `arranger`, with titles never
 edited, because putting arranger text into a title recreates the contamination
 this record removes from `firstName`. The mechanics belong to AWK-18. Note that

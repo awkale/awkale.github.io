@@ -35,8 +35,15 @@ unstable — eight title families already collide (three `violin-concerto-in-d-m
 two `sleigh-ride`), so any new work sharing a title would force a live URL to
 change. The importer's generated slugs
 (`tchaikovsky-pyotr-ilyich--suite-no-4-in-g-major-mozartiana-054ffb`) were
-dropped: truncated mid-word, up to 67 characters, and the hash buys nothing
-because (composer, title) is already unique.
+dropped: truncated mid-word, up to 67 characters, and the hash buys almost
+nothing because (composer, title) is unique for 347 of the 348 in-scope works.
+The exception is real and is not the arranger merge described below: Tchaikovsky's
+*The Nutcracker Suite* and Ellington's arrangement of it carry
+**character-identical titles** under the same composer, so the pair collides on
+(composer, title) itself. Since `work.slug` also carries `unique: true`, the two
+entries currently coexist *only* because of those hash suffixes — dropping the
+hash without supplying a disambiguator is a schema rejection, not merely an ugly
+URL. See [ADR-0005](0005-composer-identity-and-arrangements.md).
 
 **Home page.** `/` is a positioning statement with two or three selected
 projects; `/projects/` is the exhaustive index. With a single-digit project count
@@ -46,15 +53,19 @@ as the price of a front door that isn't just a list.
 ## Consequences
 
 **Composer records must be merged first.** Nesting makes composer identity
-load-bearing. Today 26 of 173 in-scope composer records carry an arranger inside
-the first-name field, splitting 16 real composers across 33 records — so
+load-bearing. **25** of 173 in-scope composer records carry an arranger inside the
+first-name field, of which 19 split 16 real composers across 33 records — so
 `/concerts/composers/tchaikovsky-pyotr-ilyich` would list 12 of his 13 works and
-silently drop the 13th. The true in-scope count is 156 composers. Arrangers are
-page detail and never appear in a URL, with one exception: after the merge,
-Tchaikovsky's *The Nutcracker Suite* and the Ellington/Strayhorn arrangement
-claim the same path, so an arranger surname may be appended to break a tie
-(`…/the-nutcracker-suite-ellington`). 347 of 348 nested URLs are otherwise
-unique.
+silently drop the 13th. The true in-scope count is 156 composers. The remaining
+six are composers who exist *only* in arranged form, so they have nothing to merge
+into and do not affect the 156, but their display name still renders as "Richard
+(arr. by Douglas) Addinsell". Arrangers are page detail and never appear in a URL,
+with one exception: Tchaikovsky's *The Nutcracker Suite* and the Ellington
+arrangement claim the same path, so an arranger surname may be appended to break
+a tie (`…/the-nutcracker-suite-ellington`). 347 of 348 nested URLs are otherwise
+unique. Settled by [ADR-0005](0005-composer-identity-and-arrangements.md), which
+also establishes that the collision is *not* created by the merge — the two titles
+were already identical.
 
 **`/concerts` hard-codes the spine.** A future recital, pit gig or chamber
 performance would sit under a path named for concerts. Taken knowingly; if that
