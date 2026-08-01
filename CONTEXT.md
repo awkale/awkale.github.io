@@ -70,6 +70,24 @@ _Pictures at an Exhibition_, Roven transcribed _Kindertotenlieder_, and Mauceri
 edited the _Psycho_ selections.
 _Avoid_: describing any of the four as "arranged" generically
 
+**Period**:
+The stylistic era a Work belongs to — one of nine values taken verbatim from
+IMSLP: Ancient, Medieval, Renaissance, Baroque, Classical, Romantic, Early 20th
+century, Modern, Jazz. Held on the Composer and inherited by their Works, except
+where a Work states its own — Ellington's _Nutcracker_ is Jazz though Tchaikovsky
+is Romantic. A browse filter, never a URL.
+_Avoid_: Era — that is IMSLP's word for the Composer-level field, and the site
+says Period for both; Style; Genre
+
+**Form**:
+What kind of piece a Work is: Symphony, Suite, Overture, Ballet, Tone Poem. A
+Work carries any number of Forms, so the _Firebird Suite_ is both a Suite and a
+Ballet rather than being filed under one. A browse filter, never a URL, and
+allowed to be incomplete — Period carries the browsing.
+_Avoid_: Genre — the retired field of that name held only whatever form word
+appeared in the title, which is why it filed ballets as suites and excerpts as
+arias. It is not this, and nothing should be called a Genre.
+
 **Soloist**:
 A named featured performer on a Program item. Section players are not recorded
 anywhere in the archive.
