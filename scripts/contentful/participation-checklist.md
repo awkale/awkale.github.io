@@ -370,7 +370,7 @@ runs share one program across two dates, so the boxes below total 404.
 
 ### 2011-10-30 · Sun · Church of St. Ann & the Holy Trinity · Nicholas Armstrong (BSO)
 - [ ] missed whole concert
-  - [ ] 1. Haydn — Divertimento (Feldparthie) in B-flat Major
+  - [x] 1. Haydn — Divertimento (Feldparthie) in B-flat Major
   - [ ] 2. Brahms — Variations on a Theme by Haydn
   - [ ] 3. Brahms — Piano Concerto No. 1 in D Minor
 
@@ -595,7 +595,7 @@ runs share one program across two dates, so the boxes below total 404.
 
 ### 2018-02-25 · Sun · Brooklyn Museum of Art · Felipe Tristan (BSO)
 - [ ] missed whole concert
-  - [ ] 1. Strauss — Seranade for 13 Winds
+  - [x] 1. Strauss — Seranade for 13 Winds
   - [ ] 2. Bernstein — Symphonic Dances, from West Side Story
   - [ ] 3. Barber — Adagio for Strings
   - [ ] 4. Respighi — Pines of Rome
@@ -644,7 +644,7 @@ runs share one program across two dates, so the boxes below total 404.
 ### 2019-06-09 · Sun · Brooklyn Museum of Art · Nicholas Armstrong (BSO)
 - [ ] missed whole concert
   - [ ] 1. Borodin — Overture, Prince Igor
-  - [ ] 2. Stravinsky — Octet for Winds
+  - [x] 2. Stravinsky — Octet for Winds
   - [ ] 3. Shostakovich — Symphony No. 10 in E Minor
 
 ## Season 47 — 2019–2020  
@@ -696,7 +696,7 @@ runs share one program across two dates, so the boxes below total 404.
 
 ### 2022-04-24 · Sun · Brooklyn Museum of Art · Nicholas Armstrong (BSO)
 - [ ] missed whole concert
-  - [ ] 1. Strauss — Sonatina No. 1 for Winds in F Major
+  - [x] 1. Strauss — Sonatina No. 1 for Winds in F Major
   - [ ] 2. Finzi — Clarinet Concerto
   - [ ] 3. van Beethoven — Symphony No. 1 in C Major
 
