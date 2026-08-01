@@ -70,9 +70,9 @@ as the price of a front door that isn't just a list.
 
 ## Consequences
 
-**Composer records must be merged first.** Nesting makes composer identity
-load-bearing. **25** of 173 in-scope composer records carry an arranger inside the
-first-name field, of which 19 split 16 real composers across 33 records — so
+**Composer records must be merged first.** Nesting puts composer identity in
+every work URL. **25** of 173 in-scope composer records carry an arranger inside
+the first-name field, of which 19 split 16 real composers across 33 records — so
 `/concerts/composers/tchaikovsky-pyotr-ilyich` would list 12 of his 13 works and
 silently drop the 13th. The true in-scope count is 156 composers. The remaining
 six are composers who exist *only* in arranged form, so they have nothing to merge

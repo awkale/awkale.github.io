@@ -178,8 +178,8 @@ rejected as a second `genre`-shaped type plus a join, for two or three companies
 conventional pair and is immediately legible in the Contentful UI, but the two
 fields can disagree and nothing keeps them consistent. A boolean alone is the
 simplest to author but leaves the order of the front door's two or three items to
-whatever the Delivery API happens to return, which is not a guarantee worth
-making load-bearing on the most important page of the site. A single nullable
+whatever the Delivery API happens to return, which is not a guarantee the most
+important page of the site should depend on. A single nullable
 `featuredRank` carries selection and order in one field, so the contradictory
 state does not exist.
 

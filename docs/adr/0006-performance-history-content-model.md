@@ -278,7 +278,7 @@ which must precede
 [AWK-19](https://linear.app/awkale/issue/AWK-19/mark-up-the-participation-checklist)'s
 output reaching Contentful.
 
-**One data gap is promoted from cosmetic to load-bearing.** The 2007-12-16
+**One data gap now hides a Concert from a browse filter.** The 2007-12-16
 Concert is the only played Concert with no conductor recorded — a ditto in the
 source that AWK-10 flagged for hand-filling. With Conductor now one of only two
 browse filters, that Concert is invisible to it until the cell is filled.

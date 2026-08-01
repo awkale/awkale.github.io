@@ -18,7 +18,8 @@ Mussorgsky`, `Modest (arr. by Peters) Mussorgsky` and `Modest (orch. by
 Rimsky-Korsakov) Mussorgsky` are four records for one man. **25 of the 173
 in-scope composer records carry the pattern**, and 37 do archive-wide.
 
-[ADR-0001](0001-url-structure.md) made this load-bearing rather than cosmetic:
+[ADR-0001](0001-url-structure.md) turned this from an untidiness into a
+correctness problem:
 works are canonically addressed at `/concerts/composers/<composer>/works/<work>`.
 Left alone, `/concerts/composers/tchaikovsky-pyotr-ilyich` lists twelve of his
 thirteen works and silently drops the thirteenth, so the site's primary

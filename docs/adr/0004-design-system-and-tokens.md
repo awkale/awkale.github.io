@@ -180,7 +180,7 @@ may safely be redefined.
 The approach is minimal-and-grow. Enumerating every token a content site might
 want — figure, blockquote, kbd, zebra, chip-selected — was rejected because most
 would be invented against imagined pages, and an unused token is worse than a
-missing one because it looks load-bearing.
+missing one because it looks like something depends on it.
 
 ## Colour modes are three-state, applied before paint
 
@@ -396,7 +396,8 @@ a card whose title and summary expand into the space the image would have
 occupied reads as intentional. At single-digit project counts a mixed grid is
 fine provided the no-image card owns its space rather than apologising for it.
 
-**The `after:absolute after:inset-0` overlay is load-bearing, not decoration.**
+**The `after:absolute after:inset-0` overlay is what makes the card clickable,
+not a styling flourish.**
 Making the whole card a link while it also contains `liveUrl` and `repoUrl`
 links would produce **nested anchors — invalid HTML that breaks keyboard and
 screen-reader navigation.** So the real anchor is the title alone, a
@@ -436,7 +437,7 @@ interpretable, and the model already carries them.
 produce a finished page on its own. AWK-22 must resolve before the map's
 destination — "nothing left to decide before a build session" — is true.
 
-**The inline theme script is load-bearing on every page.** It is not an
+**Every page depends on the inline theme script.** It is not an
 enhancement that can be dropped; without it the site flashes the wrong theme on
 all ~600 pages. Anything that changes the root route's `<head>` must preserve it.
 
