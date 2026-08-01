@@ -79,7 +79,11 @@ _Avoid_: Performer, musician, player
 The person who conducted a Concert.
 
 **Season**:
-The orchestra's numbered concert year. Seasons run 1 to 52.
+The orchestra's numbered concert year. Seasons run 1 to 52. Recorded on every
+BSO-era Concert and shown nowhere on the site — a Season describes the
+orchestra's calendar, not Alex's repertoire.
+_Avoid_: grouping or filtering anything published by Season; the Concert date
+does that
 
 **Archive**:
 The complete institutional record of the Brooklyn Symphony Orchestra and its
@@ -87,11 +91,47 @@ sibling organizations, including concerts predating Alex. Substrate for the
 Performance history, never a published surface of its own.
 _Avoid_: using this word for the Performance history
 
+### Participation
+
+**Participation**:
+The record of what Alex himself performed, held as `attended` and `satOut` on
+each Concert. The only thing that decides what the site publishes.
+_Avoid_: Attendance — he was playing, not attending
+
+**Attended**:
+True when Alex played a Concert, false when he was in the orchestra and missed
+that date, unset when the Concert is not part of his history at all. Both false
+and unset publish nothing, and the two are kept distinct so a considered
+judgement is not confused with an unreviewed row.
+_Avoid_: reading unset as "not yet checked" — it means "not his"
+
+**Sat out**:
+A Program item Alex did not play at a Concert he otherwise played. Listed in that
+Concert's `satOut`. Not shown anywhere: a sat-out Work is omitted from the
+Concert's program, and loses its page if that was its only Performance.
+_Avoid_: Skipped, missed — Missed applies to a whole Concert
+
+**Played**:
+Said of a Work when at least one Performance of it was Attended and not Sat out.
+The claim the site exists to make, stated plainly in the first person.
+_Avoid_: hedging it to "on a program I played" — the page only exists because he
+played it
+
 ### Scope
 
 **Tenure**:
-The period from Alex's first Concert (2001-05-24) onward.
+The period from Alex's first BSO-era Concert (2001-05-24) onward. Still a real
+period, and still the reason "pre-tenure" is a useful word, but it no longer
+decides what the site shows.
 
 **In scope**:
-Within Tenure. Determined by concert date, never by Season number — Season 28
-straddles the boundary.
+Attended is true. Nothing else. A Concert qualifies because Alex played it, never
+because of when it happened.
+_Avoid_: treating the Tenure date as a filter — it seeds Participation for the
+BSO-era Concerts and is read nowhere at build time
+
+**Seed data**:
+The BSO Archive Concerts loaded in bulk, 119 of which predate Tenure. The only
+source that will ever contain Concerts Alex did not play — everything added by
+hand afterwards is a Performance by construction, which is why unmarked data
+publishes nothing.
