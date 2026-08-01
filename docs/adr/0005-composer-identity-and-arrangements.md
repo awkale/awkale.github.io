@@ -63,6 +63,13 @@ its owner, on the section that exists for his own reference.
 **In-scope works stay 348, composers 156, concerts 127**, so ADR-0001's total of
 637 + N is untouched.
 
+> That statement was correct when made and is left as written.
+> [ADR-0006](0006-performance-history-content-model.md) has since changed the
+> total for a different reason — `/concerts` now publishes only the concerts Alex
+> performed, so the archive-side count is derived from participation data rather
+> than fixed. The in-scope figures above are unaffected: this record genuinely
+> does not move them, which is what the sentence claims.
+
 `arrangementOf` additionally links an arrangement to its original **when the
 archive holds both**, which is exactly two pairs archive-wide:
 

@@ -58,6 +58,14 @@ is
 [AWK-21](https://linear.app/awkale/issue/AWK-21/decide-which-projects-ship-and-which-get-case-studies),
 and until it resolves the site's page count is 637 plus an unknown.
 
+> **The 637 is superseded by
+> [ADR-0006](0006-performance-history-content-model.md)**, which limited
+> `/concerts` to the concerts Alex performed. The archive side of the total is now
+> derived from participation data rather than fixed, so the page count is *two*
+> unknowns: a computed concert-side figure plus N. Nothing about N or about the
+> optional-`body` reasoning above changes — N is still projects whose `body` is
+> non-empty, and it remains the only unknown this record is responsible for.
+
 ## Schema
 
 `project` — display field `title`, auto-generated entry ids.

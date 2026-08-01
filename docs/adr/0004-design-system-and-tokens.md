@@ -53,11 +53,20 @@ Nothing is installed speculatively.
 
 The interactive inventory is small and worth recording, because it is what
 justifies this being a component *source*. [ADR-0001](0001-url-structure.md)
-made soloist, conductor, season, hall and genre **facets on the indexes rather
+made soloist, conductor, hall and genre **facets on the indexes rather
 than routes** — the decision that keeps ~650 pages from becoming ~870 — which
 means facet filtering happens client-side on a prerendered page. Add a theme
 control, an A–Z jump, and possibly archive search, and that is close to the
-whole of it. The remaining ~637 pages are typography, tables and links.
+whole of it. The remaining ~600 pages are typography, tables and links.
+
+[ADR-0006](0006-performance-history-content-model.md) narrowed this further after
+the fact: **season is no longer a surface at all**, and of the remaining facets
+only **conductor and hall ship as filters** — soloist and ensemble became
+display-only credits, since 256 of the 404 program-item occasions carry no
+soloist. That shrinks the interactive inventory rather than growing it, so the
+reasoning above holds with fewer controls to build. The page figures are the
+in-scope archive's; the published site is smaller and its size is a rule rather
+than a number.
 
 The accepted cost is that shadcn's token contract is tuned for app chrome, so a
 reading-and-reference site inherits a `--sidebar-*` group it will never use, and
@@ -185,7 +194,7 @@ The mechanism is forced by
 per-request.** There is no cookie to read, no server to stamp a class. So a
 theme driven by `localStorage` can only be applied by JavaScript, and unless
 that JavaScript runs before first paint there is a flash of the wrong theme on
-every one of ~637 pages.
+every one of ~600 pages.
 
 The resolution is a **blocking inline `<script>` in the root route's `<head>`**,
 emitted via `dangerouslySetInnerHTML` so prerendering inlines it into every
@@ -300,7 +309,7 @@ These are the names `typeset` reaches for via `--typeset-font-body` and
 The site being replaced loads Adobe Fonts — `_includes/head.html` carries
 `//use.typekit.net/tkq1har.js` for `harfang-pro`. That is not carried forward.
 It costs an extra DNS and TLS handshake before fonts begin loading, adds a
-blocking third-party script to all ~637 pages, and makes the site's typography
+blocking third-party script to all ~600 pages, and makes the site's typography
 depend on a live subscription. **That subscription has lapsed**; access appears
 to persist, which is the worst shape of dependency — it works today, will stop
 at an unknown date, and fails silently with no deploy on the author's side. On a
@@ -429,7 +438,7 @@ destination — "nothing left to decide before a build session" — is true.
 
 **The inline theme script is load-bearing on every page.** It is not an
 enhancement that can be dropped; without it the site flashes the wrong theme on
-all ~637 pages. Anything that changes the root route's `<head>` must preserve it.
+all ~600 pages. Anything that changes the root route's `<head>` must preserve it.
 
 **`:visited` must be expressed in colour alone.** Browsers restrict `:visited`
 styling to colour properties — `color`, `background-color`, `border-color`,

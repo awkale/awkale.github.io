@@ -128,6 +128,23 @@ build-minute budget continuously. This is a selection criterion for the static
 rendering layer, and is recorded on
 [AWK-8](https://linear.app/awkale/issue/AWK-8/choose-the-static-rendering-layer-above-vite).
 
+> **Note on the figures above.** The `637 pages` used throughout this record —
+> in the staging-and-crawler reasoning, the webhook cost estimate, and the
+> paragraph immediately above — is superseded by
+> [ADR-0006](0006-performance-history-content-model.md), which limited `/concerts`
+> to the concerts Alex actually performed. The published total is now a rule
+> rather than a figure, roughly 597 + N and moving. None of the conclusions here
+> change: a smaller site indexes just as readily, and a smaller prerender is
+> cheaper, so both arguments hold with room to spare.
+>
+> The *other* premise in the webhook estimate is separately in doubt, and for an
+> unrelated reason — Netlify's current credit-based plans meter deployments
+> rather than build minutes, which would make deploy *frequency* the binding
+> constraint instead of build duration. That is
+> [AWK-16](https://linear.app/awkale/issue/AWK-16/confirm-what-netlify-actually-meters-and-what-throttles-deploys),
+> still open. Correcting the page count here should not be read as having
+> validated the build-minute model.
+
 **An unpublished import renders an empty site.** The build reads the Contentful
 Delivery API, which returns only published entries, and the importer creates
 drafts by default with publishing behind a separate `--publish` flag. If the BSO

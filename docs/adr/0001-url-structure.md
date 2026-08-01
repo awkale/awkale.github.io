@@ -8,9 +8,27 @@ The site has two peer sections: design/dev work at `/projects` and the
 performance history at `/concerts`. Works are addressed canonically under their composer, at
 `/concerts/composers/<composer>/works/<work>`; concerts are keyed by date, at
 `/concerts/2008-12-13`. Only concerts, composers and works get pages — soloist,
-conductor, season, hall and genre are facets on the indexes, which keeps roughly
-650 prerendered pages from becoming roughly 870, and keeps genre's 34% coverage
+conductor, hall and genre are facets on the indexes, which keeps roughly
+650 prerendered pages from becoming roughly 870, and keeps genre's 33% coverage
 gap off the URL surface entirely.
+
+> **Superseded in part by
+> [ADR-0006](0006-performance-history-content-model.md).** Two corrections, both
+> to *what is published* rather than to the URL shapes below, which stand
+> unchanged.
+>
+> **Season is no longer a surface at all** — not a route and not a facet. It is
+> recorded on BSO-era concerts and never rendered, because a numbered season
+> describes the orchestra's calendar rather than Alex's repertoire. This
+> paragraph originally listed it alongside the other four facets.
+>
+> **The page count is now a rule, not a figure.** `/concerts` publishes only the
+> concerts Alex performed, so the total is derived from participation data and
+> moves — 121 concerts, 322 works and 148 composers when ADR-0006 was accepted,
+> so 591 routed pages or roughly 597 with indexes, plus N. It falls as further
+> participation exceptions are recorded and rises as pre-BSO programs are added.
+> The ~650 and ~870 figures here describe the full in-scope archive and remain
+> valid as the comparison that justified facets over routes.
 
 ## `/music` is reserved
 
