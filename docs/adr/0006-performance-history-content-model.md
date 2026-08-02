@@ -113,6 +113,13 @@ Letting `satOut` merely annotate was the runner-up and is rejected below.
 roughly 597 with indexes, plus N case studies** — against 127 / 348 / 156 for the
 full in-scope archive.
 
+> **Corrected to 147 Composers by
+> [ADR-0008](0008-archive-slug-source.md).** Walton is one person split across two
+> records by an honorific — `Walton, Sir William` and `Walton, William` — and both
+> halves hold played Works, so every figure from this record onward counted him
+> twice. The Concert and Work counts are unaffected and reconcile exactly. **590
+> routed pages, roughly 596 with indexes, plus N.**
+
 The two axes cost different things, which is worth seeing separately:
 
 | Marked | Concert pages | Work pages | Composers |

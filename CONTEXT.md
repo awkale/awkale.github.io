@@ -47,9 +47,19 @@ A distinct musical composition as performed.
 _Avoid_: Piece, song, track
 
 **Composer**:
-The person who wrote a Work. One record per person: an Arranger is never part of
-a Composer's identity.
+The person who wrote a Work. One record per person: neither an Arranger nor an
+honorific is part of a Composer's identity, so "Sir William Walton" and "William
+Walton" are one Composer. A generational marker is the opposite — Johann Strauss
+Sr. and Johann Strauss II are two Composers, and the marker is the only thing
+saying so.
 _Avoid_: Author, writer
+
+**Filing name**:
+The form a Composer is sorted and addressed under: the main root of the surname
+first, with a lowercase prefix moved to the back — Ludwig van Beethoven files as
+_Beethoven, Ludwig van_, under B. The prefix is relocated, never dropped, so the
+displayed name is always recoverable from the filing name.
+_Avoid_: filing under the prefix; discarding the prefix
 
 **Arranger**:
 A person who reworked a Work for different forces than the Composer wrote for.
