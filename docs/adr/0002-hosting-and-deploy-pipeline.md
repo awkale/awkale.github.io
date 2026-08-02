@@ -103,12 +103,33 @@ sitemap and treating the twelve redirects as one ledger.
 
 ## Consequences
 
-**The apex stays canonical, so ALIAS support matters.** Every URL in ADR-0001,
-the existing TLS certificate, and the current `CNAME` file assume `awkale.me`
-rather than `www.awkale.me`. Pointing an apex at a platform hostname needs an
-ALIAS/ANAME record; if Namecheap's plan does not offer one, the fallback is a
-plain A record to Netlify's load balancer at `75.2.60.5`, which is a hardcoded
-third-party address that will eventually need revisiting.
+**The apex stays canonical, and Namecheap supports the ALIAS it needs.** Every
+URL in ADR-0001, the existing TLS certificate, and the current `CNAME` file
+assume `awkale.me` rather than `www.awkale.me`. An apex cannot use a CNAME — the
+name has to carry the zone's `NS` and `SOA` records, which a CNAME may not
+coexist with — so pointing it at a platform hostname needs an ALIAS/ANAME.
+Namecheap offers one on `BasicDNS`, `FreeDNS` and `PremiumDNS` alike at no extra
+cost, and `awkale.me` is on `BasicDNS`. Netlify's target is the hostname
+`apex-loadbalancer.netlify.com`, so the earlier fallback — a plain A record to
+`75.2.60.5` — is not needed, and neither is the concern about maintaining a
+hardcoded third-party address.
+
+Two operational details follow. The apex currently holds **four GitHub Pages A
+records** (`185.199.108–111.153`), and Namecheap will not create an ALIAS on a
+host that already has `A`, `AAAA` or `CNAME` records — so the cutover is
+delete-then-add, not add. And Namecheap caps ALIAS TTL at one or five minutes,
+which bounds the rollback window to about five minutes and shrinks the
+propagation half of the TLS gap below — issuance time is Let's Encrypt's and is
+not governed by the TTL.
+
+**The apex costs some CDN routing, and that is accepted.** Netlify's guidance
+for third-party DNS is that an apex configured this way "can't take advantage of
+direct DNS routing on a global CDN like Netlify's", and it recommends a
+subdomain as the primary hostname whenever external DNS is in play. That
+conflicts with the apex-canonical commitment above, and the conflict does not
+resolve: the email forwarding pins the zone to Namecheap, and the twelve
+redirects, the existing certificate and every URL in ADR-0001 assume the bare
+domain. The routing cost is therefore accepted knowingly rather than avoided.
 
 **There is a short TLS window at cutover.** The current certificate covers
 `awkale.me` and `www.awkale.me` and expires 2026-09-30. Netlify provisions its
@@ -137,13 +158,37 @@ rendering layer, and is recorded on
 > change: a smaller site indexes just as readily, and a smaller prerender is
 > cheaper, so both arguments hold with room to spare.
 >
-> The *other* premise in the webhook estimate is separately in doubt, and for an
-> unrelated reason — Netlify's current credit-based plans meter deployments
-> rather than build minutes, which would make deploy *frequency* the binding
-> constraint instead of build duration. That is
-> [AWK-16](https://linear.app/awkale/issue/AWK-16/confirm-what-netlify-actually-meters-and-what-throttles-deploys),
-> still open. Correcting the page count here should not be read as having
-> validated the build-minute model.
+> The *other* premise in the webhook estimate — that build minutes are what
+> Netlify meters — has since been **confirmed**, by
+> [AWK-16](https://linear.app/awkale/issue/AWK-16/confirm-what-netlify-actually-meters-and-what-throttles-deploys).
+> Netlify's credit-based plans do meter deployments rather than build minutes,
+> but they bind only accounts created after 2025-09-04; the `awkale` team dates
+> to 2018-10-08 and so sits on a **Legacy Free** plan, where the 300
+> build-minutes figure used above is correct.
+>
+> One correction to it, though: on the Free tier the 300 minutes is a **hard
+> stop, not a budget**. Legacy Starter and Pro buy their way past it at $7 per
+> 500 minutes; Free cannot, so exhausting the allowance does not produce an
+> invoice, it produces a site that cannot be deployed until the cycle resets —
+> the worse failure during a cutover. Bandwidth (100 GB/month) is a hard limit
+> on the same terms, and legacy does not meter web requests at all.
+>
+> This also settles the alternative the *Rebuild trigger* section weighed. At a
+> one-to-three-minute prerender, 300 minutes is 100–300 builds per month, which
+> is ample for steady-state publishing — so the scoped webhook plus a manual
+> disable before bulk runs is sufficient, and the debouncing function it was
+> measured against solves a problem this plan does not have. Under the credit
+> reading the same allowance would have been roughly 20 production deploys per
+> month, and debouncing would have been mandatory rather than optional. The
+> bulk-import conclusion itself was never at risk either way: ~2,383 publishes
+> cost 2,383–7,149 build minutes, or 35,745 credits, against an allowance of
+> 300.
+>
+> **Do not optimise into the build-minute model.** Legacy plans are closed to
+> new accounts and migrating off one is irreversible, so if the plan ever moves
+> the binding constraint flips from build *duration* to deploy *frequency* and
+> the debouncing question reopens immediately. The design above happens to be
+> robust to that flip; it should stay that way.
 
 **An unpublished import renders an empty site.** The build reads the Contentful
 Delivery API, which returns only published entries, and the importer creates
