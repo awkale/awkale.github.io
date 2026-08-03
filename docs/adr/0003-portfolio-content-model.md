@@ -66,6 +66,31 @@ and until it resolves the site's page count is 637 plus an unknown.
 > optional-`body` reasoning above changes — N is still projects whose `body` is
 > non-empty, and it remains the only unknown this record is responsible for.
 
+> **N is settled at 2, then 3.** Resolved by
+> [AWK-21](https://linear.app/awkale/issue/AWK-21/decide-which-projects-ship-and-which-get-case-studies).
+> Five projects ship in the index — the dv01 **Waterfall Design System**, **Agent
+> A**, **awkale.me** itself, and the two **Cision** items — and two carry a `body`
+> at cutover: Waterfall and Agent A. So the site publishes **≈598** pages at
+> cutover and **≈599** once awkale.me gains its case study.
+>
+> **awkale.me ships index-only because its case study cannot be written honestly
+> before it exists.** A write-up of building the site, published on the site, at
+> cutover, is either future tense or a claim about something unproven. This is the
+> first time the optional `body` earns its keep rather than merely being
+> available: the entry ships with no page and graduates post-launch by filling one
+> field, which *adds* a URL rather than changing one. The same affordance holds
+> the deferred dv01 product screens, which arrive as a `body` edit if dv01 ever
+> agrees to them.
+>
+> **`imageGroup`'s justification has moved from validated to expected.** *Image
+> grouping* below claims the type "is required by 100% of the case-study content
+> that currently exists, so nothing about it is speculative" — and that content
+> was the two Cision items, which now get no bodies. The sidebar before/after
+> *was* the `sideBySide` case and the wizard *was* the `fullWidth` + `grid` case;
+> both variants are now justified by case studies not yet written. The type is
+> kept, because a Waterfall before/after is very likely, but it is no longer
+> validated against anything real and this record should not keep implying it is.
+
 ## Schema
 
 `project` — display field `title`, auto-generated entry ids.
@@ -227,6 +252,23 @@ caption, since the model reads captions from the asset. They are the only
 portfolio imagery that exists and none of it has been migrated. This is build
 work rather than a decision.
 
+> **Two, not eight.**
+> [AWK-21](https://linear.app/awkale/issue/AWK-21/decide-which-projects-ship-and-which-get-case-studies)
+> ships both Cision items index-only, so neither has a `body` and neither uses an
+> `imageGroup`. Each needs a single `coverImage` — `updated_sidebar.jpg` and
+> `Wizard v2@2x.png` — and the remaining six screenshots are never uploaded. The
+> `title`/`description` requirement still applies to the two, and the two case
+> studies that *do* ship bring their own imagery, which for Waterfall means
+> **screenshots of `ux.dv01.co` rather than hotlinks to it**: it is a live
+> internal-facing property that can be restructured or put behind auth without
+> notice, and a case study should not break when it is.
+>
+> An index-only Cision entry with no image at all was rejected as
+> indistinguishable from an omission — if that were the outcome, dropping both
+> entries would have been the honest version. Two cover images keep them what they
+> are: small, dated, real work, which is the "smaller and older items" index
+> [ADR-0001](0001-url-structure.md) promised.
+
 **Publishing a project triggers a site build.** There is deliberately no draft
 field; Contentful's native publish state carries it. That couples project
 authoring to the rebuild trigger in [ADR-0002](0002-hosting-and-deploy-pipeline.md),
@@ -248,3 +290,21 @@ already carry `unique: true` if a stored answer is wanted there too.
 field both the index card and `<meta name="description">` depend on, so a project
 cannot be created without the text that both surfaces need. The ~160 character
 cap exists for the second consumer, not the first.
+
+**`featuredRank` requires a non-empty `body`, and the build must assert it.**
+Established by
+[AWK-21](https://linear.app/awkale/issue/AWK-21/decide-which-projects-ship-and-which-get-case-studies).
+The schema above cannot express the dependency — both fields are independently
+optional — but the two interact badly at exactly the worst place. A featured
+project with no `body` has no page, so its home-page card either does not click at
+all, or clicks *off-site* to `liveUrl` while the card beside it opens a case
+study. The no-image and no-link card states this record already hands to
+[ADR-0004](0004-design-system-and-tokens.md) are an index-card problem;
+`featuredRank` puts the same state on the front door, where 2–3 cards carry the
+whole positioning statement.
+
+This is the fourth invariant Contentful cannot hold — after `sideBySide`'s image
+count, `satOut`'s subset rule and `(composer, slug)`'s scoped uniqueness — and it
+belongs in the same build assertion. It also fixes the ordering of two editorial
+decisions that look independent: awkale.me joins the home page when it gains its
+body, not before, so N and the featured set move together.

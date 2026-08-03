@@ -105,3 +105,25 @@ glossary. Portfolio items are *Projects* everywhere: routes, prose, and
 their GitHub Gists. The cheatsheets carry no content of their own — each is a
 single `<script src="gist.github.com/…">` embed, untouched since 2017 — so they
 get no routes.
+
+> **Thirteen, and two of the targets were wrong.** Corrected by
+> [AWK-21](https://linear.app/awkale/issue/AWK-21/decide-which-projects-ship-and-which-get-case-studies).
+>
+> **`/user-story-best-practice/` was missed entirely.** It returns 200 today, and
+> not from this repo — GitHub Pages serves it from the `gh-pages` branch of the
+> separate `awkale/user-story-best-practice` repo, which resolves under
+> `awkale.me` only because the user site holds the `CNAME`. Nothing in this
+> record or [ADR-0002](0002-hosting-and-deploy-pipeline.md) mentions it, so the
+> apex cutover would have silently 404'd it. It redirects to the repo
+> (`github.com/awkale/user-story-best-practice`) rather than to the 2015 slide
+> deck: the deck and the repo's `README.md` carry the same guide, the README is
+> the better rendering, and the repo is what the URL's 65 stars actually point
+> at. Redirecting to `awkale.github.io/user-story-best-practice/` was rejected
+> as the one option whose target depends on how Pages behaves once the `CNAME`
+> is removed — an unknown resolved at cutover, on the one URL here with an
+> organic audience.
+>
+> **The two `/portfolios/*` URLs redirect to the `/projects/` index, not to case
+> studies.** Both are Cision items and AWK-21 ships them index-only, so the
+> pages this sentence promises them will not exist. A redirect to a case study
+> that was never written is a 404 with extra steps.
