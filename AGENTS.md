@@ -1,33 +1,47 @@
 # AGENTS.md
 
-Instructions for coding agents working in this repository.
+**This repo is retired. The spec, the domain docs and the archive pipeline have
+moved to [awkale/awkale.me](https://github.com/awkale/awkale.me).**
 
-## Agent skills
+Per [ADR-0002][adr2], `awkale.github.io` is replaced by a prerendered React site
+on Netlify. Everything an agent needs was migrated on 2026-08-03 so that
+archiving this repo strands nothing:
 
-### Issue tracker
+| Was here | Now at `awkale/awkale.me` |
+| --- | --- |
+| `docs/adr/` | `docs/adr/` |
+| `CONTEXT.md` | `CONTEXT.md` |
+| `docs/agents/` | `docs/agents/` |
+| `docs/research/` | `docs/research/` |
+| `scripts/contentful/` | `scripts/contentful/` |
+| `Wikipedia BSO Archive.xlsx` | `Wikipedia BSO Archive.xlsx` (repo root — the parser's default path) |
+| `scripts/contentful/participation-checklist.md` | `docs/archive/participation-checklist.md` |
 
-Issues live in **Linear** — workspace `awkale`, team **AWKALE** (key `AWK`) —
-reached via the `linear-server` MCP. Not GitHub Issues.
-See `docs/agents/issue-tracker.md`.
+Each was verified byte-identical before removal here, and deleted rather than
+copied, so there is exactly one copy of each and the two repos cannot drift.
 
-### Triage labels
+## What is still here
 
-The five canonical roles, used verbatim (`needs-triage`, `needs-info`,
-`ready-for-agent`, `ready-for-human`, `wontfix`) as a mutually-exclusive Linear
-label group. See `docs/agents/triage-labels.md`.
+Only the site being replaced: the 2016-era Jekyll source, its `bower_components`,
+and the `CNAME` that points `awkale.me` at GitHub Pages. Nothing here is a
+reference for the rewrite.
 
-### Domain docs
+**Do not add specs, ADRs or domain docs to this repo.** They belong in the new
+one.
 
-`CONTEXT.md` at the repo root. See `docs/agents/domain.md`.
+## Until cutover
 
-**The ADRs have moved.** `docs/adr/` and the performance-participation checklist
-now live in **[awkale/awkale.me](https://github.com/awkale/awkale.me)** — the
-repo that replaces this one per ADR-0002 — at `docs/adr/` and
-`docs/archive/participation-checklist.md`. They were moved on 2026-08-03 so they
-would not be stranded when this repo is archived. Read them there; this repo no
-longer holds a copy, deliberately, so the two cannot drift.
+This repo still *serves* `awkale.me`, so it is not inert:
 
-Still here and **still to be carried across before this repo is archived**:
-`CONTEXT.md`, `scripts/contentful/` (the parser carrying the `shares` fix,
-`bso-graph.json`, and the importer) and `Wikipedia BSO Archive.xlsx`. ADR-0002
-anticipated that migration cost; it is not done.
+- The apex resolves to GitHub Pages A records (`185.199.108–111.153`). The cutover
+  removes those four and adds one ALIAS.
+- `CNAME` stays until then.
+- `awkale.me/user-story-best-practice/` returns 200 but is served from the
+  `gh-pages` branch of **another repo**, resolving under the apex only because
+  this repo holds the `CNAME`. It is redirect thirteen and nothing in this
+  codebase reveals it exists.
+
+Issues live in **Linear** — workspace `awkale`, team **AWKALE** (key `AWK`) — not
+GitHub Issues. The tracker doc moved with everything else.
+
+[adr2]: https://github.com/awkale/awkale.me/blob/master/docs/adr/0002-hosting-and-deploy-pipeline.md
